@@ -7,6 +7,10 @@ This Nuxt 3 Boilerplate provides many pre-configured modules such as
 -   [GSAP](https://greensock.com/docs/) → Professional-grade animation for the modern web
 -   [GSAP ScrollSmoother](https://greensock.com/scrollsmoother/) → premium plugin for GSAP
 
+## Next to come
+
+-   [prefers-reduced-motion](https://web.dev/prefers-reduced-motion/) → Sometimes less movement is more
+
 ## Setup
 
 Make sure to install the dependencies:
