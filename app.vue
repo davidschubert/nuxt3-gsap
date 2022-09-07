@@ -1,6 +1,44 @@
+<script setup>
+const { gsap, ScrollTrigger, ScrollSmoother, SplitText } =
+    useGsap();
+
+onMounted(() => {
+    // Move the box 600px on x-axis to the right
+    gsap.to(".box", {
+        x: 600,
+    });
+
+    // create the smooth scroller FIRST!
+    const smoother = ScrollSmoother.create({
+        wrapper: "#wrapper",
+        content: "#content",
+        smooth: 1,
+        normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
+        ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
+        effects: true,
+        preventDefault: true,
+    });
+
+    // set the headline
+    gsap.set(".heading", {
+        yPercent: -150,
+        opacity: 1,
+    });
+
+    let tl = gsap.timeline();
+    let mySplitText = new SplitText("#split-stagger", { type: "words,chars" });
+    let chars = mySplitText.chars;
+
+    chars.forEach((char, i) => {
+        smoother.effects(char, { speed: 1, lag: (i + 1) * 0.1 });
+    });
+});
+</script>
+
 <template>
     <div id="wrapper">
         <section id="content">
+            <div class="box green"></div>
             <!-- smooth scrolling biz goes in here -->
             <div class="heading" aria-hidden="true">
                 <p>smooooth</p>
@@ -144,41 +182,6 @@
     </div>
 </template>
 
-<script setup>
-/*import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { SplitText } from "gsap/SplitText";*/
-
-/*mounted: () => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
-
-    // create the smooth scroller FIRST!
-    const smoother = ScrollSmoother.create({
-        wrapper: "#wrapper",
-        content: "#content",
-        smooth: 1,
-        normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
-        ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
-        effects: true,
-        preventDefault: true,
-    });
-
-    gsap.set(".heading", {
-        yPercent: -150,
-        opacity: 1,
-    });
-
-    let tl = gsap.timeline();
-    let mySplitText = new SplitText("#split-stagger", { type: "words,chars" });
-    let chars = mySplitText.chars;
-
-    chars.forEach((char, i) => {
-        smoother.effects(char, { speed: 1, lag: (i + 1) * 0.1 });
-    });
-};*/
-</script>
-
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
 @font-face {
@@ -189,6 +192,15 @@ import { SplitText } from "gsap/SplitText";*/
             format("woff");
     font-weight: normal;
     font-style: normal;
+}
+
+.box {
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+.green {
+    background-color: #00ff00;
 }
 
 :root {

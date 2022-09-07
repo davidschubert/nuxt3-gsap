@@ -1,5 +1,9 @@
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
+gsap.to(".box", {
+    x: 600,
+});
+
 // create the smooth scroller FIRST!
 const smoother = ScrollSmoother.create({
     wrapper: "#wrapper",

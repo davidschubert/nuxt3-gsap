@@ -2,7 +2,7 @@ import { defineNuxtConfig } from "nuxt";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    app: {
+    /* app: {
         head: {
             script: [
                 {
@@ -32,7 +32,8 @@ export default defineNuxtConfig({
                 },
             ],
         },
-    },
+    },*/
+    
     build: {
         transpile: ["gsap"],
     },
