@@ -1,14 +1,6 @@
 <template>
     <div>
         <strong>Homepage</strong>
-        <header class="header">
-            <h1 class="title">ScrollSmoother</h1>
-            <button class="button">Jump to C</button>
-        </header>
-        <div class="box box-a" data-speed="0.5">a</div>
-        <div class="box box-b" data-speed="0.8">b</div>
-        <div class="box box-c" data-speed="1.5">c</div>
-        <div class="line"></div>
         <nav>
             <ul>
                 <li><NuxtLink to="/">Homepage</NuxtLink></li>
@@ -17,6 +9,15 @@
                 <li><NuxtLink to="/smooth">ScrollSmoother</NuxtLink></li>
             </ul>
         </nav>
+
+        <header class="header">
+            <h1 class="title">ScrollSmoother</h1>
+            <button class="button">Jump to C</button>
+        </header>
+        <div class="box box-a" data-speed="0.5">a</div>
+        <div class="box box-b" data-speed="0.8">b</div>
+        <div class="box box-c" data-speed="1.5">c</div>
+        <div class="line"></div>
     </div>
 </template>
 

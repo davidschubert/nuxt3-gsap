@@ -79,6 +79,15 @@ onMounted(() => {
             />
         </div>-->
 
+        <nav>
+            <ul>
+                <li><NuxtLink to="/">Homepage</NuxtLink></li>
+                <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+                <li><NuxtLink to="/impressum">Impressum</NuxtLink></li>
+                <li><NuxtLink to="/smooth">ScrollSmoother</NuxtLink></li>
+            </ul>
+        </nav>
+
         <div class="box green"></div>
 
         <!-- smooth scrolling content goes in here -->
