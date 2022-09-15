@@ -4,6 +4,9 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
 
 export default defineNuxtPlugin(() => {
+    /*------------------------------
+    Register plugins
+    ------------------------------*/
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
     return {

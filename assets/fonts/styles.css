@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "wild_worldbold";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("https://assets.codepen.io/756881/wild_world-webfont.woff2")
+            format("woff2"),
+        url("https://assets.codepen.io/756881/wild_world-webfont.woff")
+            format("woff");
+}

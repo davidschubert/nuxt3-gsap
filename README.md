@@ -10,6 +10,7 @@ This Nuxt 3 Boilerplate provides many pre-configured modules such as
 ## Next to come
 
 -   [prefers-reduced-motion](https://web.dev/prefers-reduced-motion/) → Sometimes less movement is more
+-   [prefers-reduced-motion ressource 2](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 
 ## Setup
 
