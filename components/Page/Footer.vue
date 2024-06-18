@@ -1,40 +1,74 @@
+<script setup></script>
+
 <template>
-    <nav>
-        <ul>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/impressum">Impressum</a></li>
-            <li><a href="/smooth">ScrollSmoother</a></li>
-        </ul>
-    </nav>
+    <footer>
+        <div class="footer__address">
+            David Schubert<br />
+            Senior UI/UX Designer<br />
+        </div>
+        <nav class="footer__social">
+            <ul>
+                <li><a href="#" target="_blank">LinkedIn</a></li>
+                <li><a href="#" target="_blank">XING</a></li>
+                <li><a href="#" target="_blank">YouTube</a></li>
+                <li><a href="#" target="_blank">Instagram</a></li>
+                <li><a href="#" target="_blank">Twitter</a></li>
+                <li><a href="#" target="_blank">Facebook</a></li>
+                <li><a href="#" target="_blank">Github</a></li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#top">Top</a>
+        </div>
+    </footer>
 </template>
 
 <style scoped>
-/* Footer CSS */
-nav {
+footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #ff0000;
-    color: #fff;
-    z-index: 200;
-
-    position: fixed;
-    right: 0;
-    bottom: 0;
+    flex-direction: row;
+    gap: calc(100% / 12);
+    margin: 0 0 0 0;
+    padding: 100px 60px 160px 60px;
+    width: 100%;
+    min-height: 40vh;
+    background: rgba(0, 0, 0, 1);
+}
+.footer__address {
+    width: 100%;
+}
+.footer__social {
+    width: 100%;
+}
+.footer__social ul {
+    list-style: none;
 }
 
-ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.footer__social li:not(:last-child) {
+    padding-bottom: 1rem;
+}
+
+.footer__social a {
+    color: rgb(29, 255, 221);
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+.footer__social a:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
 }
 
 a {
-    color: #fff;
+    color: rgb(29, 255, 221);
     text-decoration: none;
-    padding: 0.5rem;
+    text-transform: lowercase;
+}
+
+a:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
 }
 </style>

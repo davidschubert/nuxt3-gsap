@@ -1,245 +1,196 @@
-<template>
-    <div>
-        <strong>Homepage</strong>
-        <nav>
-            <ul>
-                <li><NuxtLink to="/">Homepage</NuxtLink></li>
-                <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-                <li><NuxtLink to="/impressum">Impressum</NuxtLink></li>
-                <li><NuxtLink to="/smooth">ScrollSmoother</NuxtLink></li>
-            </ul>
-        </nav>
-
-        <header class="header">
-            <h1 class="title">ScrollSmoother</h1>
-            <button class="button">Jump to C</button>
-        </header>
-        <div class="box box-a" data-speed="0.5">a</div>
-        <div class="box box-b" data-speed="0.8">b</div>
-        <div class="box box-c" data-speed="1.5">c</div>
-        <div class="line"></div>
-    </div>
-</template>
-
 <script setup>
 definePageMeta({
-    title: "Homepage",
-    layout: "page",
+    // set custom layout
+    //layout: "default",
+    //layoutTransition: true,
+    //pageTransition: true,
 });
 
-const { gsap, ScrollTrigger, ScrollSmoother, SplitText } = useGsap();
+// SEO and Meta
+useHead({
+    title: "Home | David Schubert — UI/UX Designer",
+    meta: [{ name: "description", content: "My amazing homepage." }],
+});
 
 onMounted(() => {
-    /*------------------------------
-    Init the GSAP SmoothScroller
-    ------------------------------*/
-    const smoother = ScrollSmoother.create({
-        wrapper: "#wrapper",
-        content: "#content",
-        smooth: 1,
-        normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
-        ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
-        effects: true,
-        preventDefault: true,
-    });
+    console.log("%c Enter Index", "background: #000; color: #fff");
+});
 
-    /* Homepage */
-    ScrollTrigger.create({
-        trigger: ".box-c",
-        pin: true,
-        start: "center center",
-        end: "+=300",
-    });
-
-    document.querySelector("button").addEventListener("click", (e) => {
-        // scroll to the spot where .box-c is in the center.
-        // parameters: element, smooth, position
-        smoother.scrollTo(".box-c", true, "center center");
-
-        // or you could animate the scrollTop:
-        // gsap.to(smoother, {
-        // 	scrollTop: smoother.offset(".box-c", "center center"),
-        // 	duration: 1
-        // });
-    });
+onBeforeRouteLeave(() => {
+    console.log("%c Exit Index", "background: #000; color: #fff");
 });
 </script>
 
-<style>
-:root {
-    --dark: #1d1d1d;
-    --grey-dark: #414141;
-    --light: #fff;
-    --mid: #ededed;
-    --grey: #989898;
-    --gray: #989898;
-    --green: #28a92b;
-    --green-dark: #4e9815;
-    --green-light: #6fb936;
-    --blue: #2c7ad2;
-    --purple: #8d3dae;
-    --red: #c82736;
-    --orange: #e77614;
-    accent-color: var(--green);
-}
-body {
-    background-color: #111;
-    font-family: "Signika Negative", sans-serif, Arial;
-    overscroll-behavior: none;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
+<template>
+    <GsapScrollsmoother :settings="'2'">
+        <div class="wrapper-home">
+            <WidgetVideoheader />
+            <div class="home">
+                <h1>Home</h1>
+                <AppAlert>This is an auto-imported component.</AppAlert>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="https://source.unsplash.com/WLUHO9A_xik/600x500"
+                    />
+                </div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae molestias officia delectus! Excepturi, reiciendis sed
+                    totam aliquam incidunt asperiores dolore odio quos ducimus
+                    consectetur enim nostrum dignissimos ex porro numquam sint
+                    maiores ipsum eum maxime nisi sunt? Nisi iusto commodi non
+                    voluptas fugit veniam voluptatibus, rem voluptatem. Sed vel
+                    nesciunt neque magni aspernatur officia ex officiis at?
+                    Facere, cumque provident?
+                </p>
+            </div>
+            <PageFooter />
+        </div>
+    </GsapScrollsmoother>
+</template>
 
-.header {
+<style scoped>
+.wrapper-home {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+    background-color: rgba(5, 80, 55, 0.1);
+}
+.home {
+    width: 62%;
+    text-align: center;
+    padding: 160px 0 160px 0;
 }
 
-#wrapper {
+.project-card {
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     overflow: hidden;
-    position: fixed;
-    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #0cc462;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-image {
     width: 100%;
+    height: 100%;
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-#content {
-    overflow: visible;
-    width: 100%;
-    /* set a height because the contents are position: absolute, thus natively there's no height */
-    height: 4000px;
-
-    background-image: linear-gradient(
-            rgba(255, 255, 255, 0.07) 2px,
-            transparent 2px
-        ),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 2px, transparent 2px),
-        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
-}
-
-button {
-    position: relative;
-}
-
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #28a92b;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    line-height: 100px;
-    font-size: 50px;
-    text-align: center;
-    will-change: transform;
-}
-.box.active {
-    background-color: red;
-}
-
-.box-a {
-    top: 200px;
-    background-color: #8d3dae;
-}
-
-.box-b {
-    top: 600px;
-}
-
-.box-c {
-    top: 1000px;
-    background-color: #e26c16;
-}
-
-.line {
-    visibility: hidden;
-    width: 2px;
-    height: 4000px;
-    position: absolute;
-    left: 400px;
-    top: 0px;
-    background-color: #777;
-}
-
-header .name {
-    color: white;
-}
-
-.title {
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    font-size: 40px;
-}
-footer {
-    position: fixed;
-    right: 0px;
-    bottom: 0px;
-    padding: 6px 10px 10px 12px;
-    border-top-left-radius: 26px;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.end {
-    position: absolute;
-    /*   bottom: 0; */
-    top: 2400px;
-    transform: translateY(-100%);
-    font-size: 30px;
-    color: white;
-}
-
-/* button:not('.box') { breaking for some reason in codepen? */
-button {
-    display: inline-block;
-    outline: none;
-    border: none;
-    padding: 8px 14px;
-    background: var(--light);
-    background-image: linear-gradient(
-        to bottom,
-        hsl(0deg 0% 100%),
-        hsl(0deg 0% 94%)
-    );
-    -webkit-box-shadow: 0px 1px 0px #414141;
-    -moz-box-shadow: 0px 1px 0px #414141;
-    box-shadow: 0px 1px 0px #414141;
-    color: var(--dark);
-    text-decoration: none;
-    -webkit-border-radius: 4;
-    -moz-border-radius: 4;
-    border-radius: 4px;
-    padding: 12px 25px;
-    font-family: "Signika Negative", sans-serif;
-    text-transform: uppercase;
-    font-weight: 600;
-    cursor: pointer;
-    line-height: 18px;
-}
-
-.light button {
-    color: var(--light);
-    background-image: linear-gradient(to bottom, #575757, #414141);
-}
-
-button:hover {
-    background: var(--green-light);
-    background-image: linear-gradient(to bottom, #57a818, #4d9916);
-    -webkit-box-shadow: 0px 1px 0px fefefe;
-    -moz-box-shadow: 0px 1px 0px fefefe;
-    box-shadow: 0px 1px 0px fefefe;
-    color: #ffffff;
-    text-decoration: none;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 </style>

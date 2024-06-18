@@ -1,16 +1,21 @@
-import { defineNuxtConfig } from "nuxt";
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    ssr: true,
+    // PR: To build your static (pre-rendered) site, you have to make sure target is set to static in your nuxt.config.js file
+    // SSR: To build your Nuxt project using Server Side Rendering (SSR) you need to ensure your target is server in your Nuxt config file. If the property is missing, that's fine, it's the default.
     target: "static",
-    sourcemap: false,
+
+    css: ["normalize.css/normalize.css", "@/assets/css/styles.scss"],
+
+    build: {
+        transpile: ["gsap"],
+    },
 
     app: {
         head: {
+            charset: "utf-8",
             htmlAttrs: { lang: "en", dir: "ltr" },
+            title: "David Schubert — UI/UX Designer",
             meta: [
-                { title: "David Schubert | Front End Developer" },
+                { title: "David Schubert — UI/UX Designer" },
                 { lang: "en" },
                 { language: "English" },
                 { property: "name", name: "name", content: "David Schubert" },
@@ -57,7 +62,7 @@ export default defineNuxtConfig({
                     property: "og:description",
                     name: "og:description",
                     content:
-                        "I will build you website as quick as possible and with high attention to details👌",
+                        "I will build you website as quick as possible and with high attention to details 👌",
                 },
                 { property: "og:locale", name: "og:locale", content: "en" },
                 {
@@ -84,7 +89,7 @@ export default defineNuxtConfig({
             ],
             link: [
                 { rel: "canonical", href: "https://davidschubert.com/" },
-                /*{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+                { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
                 {
                     rel: "icon",
                     type: "image/x-icon",
@@ -108,8 +113,9 @@ export default defineNuxtConfig({
                     sizes: "180x180",
                     href: "/apple-touch-icon.png",
                 },
-                { rel: "manifest", href: "/site.webmanifest" },*/
+                { rel: "manifest", href: "/site.webmanifest" },
             ],
+            /*style: [],*/
             /*script: [
                 {
                     type: "text/javascript",
@@ -117,12 +123,17 @@ export default defineNuxtConfig({
                     body: true,
                 },
             ],*/
+            noscript: [
+                // <noscript>JavaScript is required</noscript>
+                { children: "JavaScript is required 🥰" },
+            ],
         },
+
+        /* this fixes GSAP animations in onMounted hooks */
+        layoutTransition: false,
+        pageTransition: true,
+        //pageTransition: { name: "page", mode: "out-in" },
     },
 
-    css: ["normalize.css/normalize.css", "@/assets/css/main.scss"],
-
-    build: {
-        transpile: ["gsap"],
-    },
+    devtools: false,
 });

@@ -1,40 +1,51 @@
 <template>
-    <nav>
-        <ul>
-            <li><NuxtLink to="/">Homepage</NuxtLink></li>
-            <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-            <li><NuxtLink to="/impressum">Impressum</NuxtLink></li>
-            <li><NuxtLink to="/smooth">ScrollSmoother</NuxtLink></li>
-        </ul>
-    </nav>
+    <header>
+        <nav class="page-navigation">
+            <ul>
+                <li><NuxtLink to="/">Home</NuxtLink></li>
+                <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+                <li><NuxtLink to="/imprint">Imprint</NuxtLink></li>
+                <li><NuxtLink to="/about">About</NuxtLink></li>
+                <li><NuxtLink to="/gsap">GSAP</NuxtLink></li>
+                <li><NuxtLink to="/gsap-boxes">Boxes</NuxtLink></li>
+                <li><NuxtLink to="/gsap-test">Test</NuxtLink></li>
+                <li><NuxtLink to="/gsap-scroll">Scroll</NuxtLink></li>
+                <li><NuxtLink to="/smooth">Smooth</NuxtLink></li>
+            </ul>
+        </nav>
+    </header>
 </template>
 
+<script setup></script>
+
 <style scoped>
-/* Header CSS */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
-    z-index: 200;
-
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-
-ul {
+.page-navigation ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-a {
-    color: #fff;
+.page-navigation li:not(:last-child) {
+    padding-right: 2rem;
+}
+
+.page-navigation a {
+    color: #f1f1f1;
     text-decoration: none;
-    padding: 0.5rem;
+    text-transform: lowercase;
+}
+
+.page-navigation a:hover {
+    color: white;
+}
+
+/* Active Link */
+.page-navigation a.router-link-active {
+    color: white;
+    cursor: default;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
 }
 </style>

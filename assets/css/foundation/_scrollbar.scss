@@ -1,0 +1,71 @@
+/* 
+Styling Scrollbars in Firefox
+*/
+body {
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* 
+Scrollbar width
+the scrollbar
+*/
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--ds-grey);
+}
+
+::-webkit-scrollbar * {
+    background: var(--ds-grey);
+}
+
+/* 
+Scrollbar Button
+the buttons on the scrollbar (arrows pointing upwards and downwards).
+*/
+::-webkit-scrollbar-button {
+    background: #aaa; /* or add it to the track */
+}
+
+/*
+Scrollbar Track / Piece
+- the track (progress bar) of the scrollbar.
+- the track (progress bar) NOT covered by the handle.
+*/
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    -webkit-box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+/*
+Scrollbar Handle
+the draggable scrolling handle.
+*/
+::-webkit-scrollbar-thumb {
+    border: 1px solid #7a7a7a;
+    /*background-clip: padding-box;*/
+    background: #8b8b8b;
+}
+
+/* Scrollbar Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffff00;
+}
+
+/*
+Scrollbar Corner
+the bottom corner of the scrollbar, where both horizontal and vertical scrollbars meet.
+*/
+::-webkit-scrollbar-corner {
+    background: #ff0000;
+}
+
+/*
+resize
+the draggable resizing handle that appears at the bottom corner of some elements.
+*/
+::-webkit-resizer {
+    background: #ff0000;
+}
