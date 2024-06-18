@@ -12,7 +12,7 @@
         "gsap": "npm:@gsap/shockingly@^3.12.4",
         "nuxt": "^3.12.2",
         "sass": "^1.69.6",
-        "sass-loader": "^13.3.3"
+        "sass-loader": "^14.2.1"
     },
     "dependencies": {
         "normalize.css": "^8.0.1",
