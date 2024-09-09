@@ -17,7 +17,7 @@
             // text animation
             gsap.to(myElement.value, {
                 duration: 1,
-                x: 100,
+                x: 0,
                 ease: "power2.inOut",
             });
 

@@ -17,25 +17,18 @@
 <template>
     <GsapScrollsmoother :settings="'8'">
         <TransitionLoading />
-        <div
-            class="w-full h-screen bg-gradient-to-br from-[#ddd5da] via-[#f0f1f7] to-[#d2d4ed] text-[#1d1d1d] flex items-center justify-center text-9xl font-normal [content-visibility:auto]"
+        <header
+            class="w-full h-screen bg-gradient-to-br from-[#ddd5da] via-[#f0f1f7] to-[#d2d4ed] text-black flex items-center justify-center text-9xl font-normal"
         >
             imprint
-        </div>
-        <div
-            class="flex flex-col items-center justify-center min-h-screen p-0 bg-green-200 bg-opacity-20"
-        >
-            <div class="w-[62%] text-center py-40">
-                <h1>Imprint</h1>
-                <h2>
+        </header>
+        <main>
+            <section class="max-w-screen-md mx-auto text-center py-40">
+                <h1 class="text-6xl">Imprint</h1>
+                <h2 class="text-4xl">
                     Ut consequat semper viverra nam libero justo laoreet sit
                     amet.
                 </h2>
-                <p>
-                    1 Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam volu.
-                </p>
                 <p>
                     "Sed ut perspiciatis unde omnis iste natus error sit
                     voluptatem accusantium doloremque laudantium, totam rem
@@ -116,10 +109,7 @@
                     gubergren, no sea tak.
                 </p>
                 <!-- Contact -->
-                <h1>
-                    Contact ipsum dolor sit amet, consetetur sadipscing elitr
-                </h1>
-                <h2>
+                <h2 class="text-4xl">
                     Ut consequat semper viverra nam libero justo laoreet sit
                     amet.
                 </h2>
@@ -162,14 +152,7 @@
                     repetition, injected humour, or non-characteristic words
                     etc.
                 </p>
-                <p>
-                    5 Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et
-                    accusam et justo duo dolores et ea rebum. Stet clita kasd
-                    gubergren, no sea tak.
-                </p>
-            </div>
-        </div>
+            </section>
+        </main>
     </GsapScrollsmoother>
 </template>
