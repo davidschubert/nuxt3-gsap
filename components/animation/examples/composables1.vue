@@ -1,5 +1,7 @@
 <template>
-    <div class="composable color">
+    <div
+        class="text-2xl p-52 flex w-full min-h-screen flex-col overflow-hidden bg-[#e3857a] text-[#202020]"
+    >
         <AnimationExamplesNav />
         <br />
         <AnimationExamplesNavComposables />
@@ -28,24 +30,7 @@
 </template>
 
 <script setup>
-const container = ref(null);
+    const container = ref(null);
 
-animateInOut(container);
+    animateInOut(container);
 </script>
-
-<style lang="scss" scoped>
-.composable {
-    font-size: 26px;
-    padding: 200px;
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.color {
-    background-color: #e3857a;
-    color: #202020;
-}
-</style>

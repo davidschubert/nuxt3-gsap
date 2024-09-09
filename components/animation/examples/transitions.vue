@@ -1,5 +1,7 @@
 <template>
-    <div class="transitions">
+    <div
+        class="bg-green-300 text-gray-800 text-2xl p-52 rounded-md mb-5 flex w-full min-h-screen flex-col overflow-hidden"
+    >
         <AnimationExamplesNav />
         <br />
         <Transition
@@ -32,11 +34,11 @@
                 </p>
                 <button @click="show = !show">toggle</button>
                 <Transition
-                    enter-active-class="transition"
+                    enter-active-class="transition-opacity duration-1000 ease-in-out"
                     enter-from-class="opacity-0"
                     enter-to-class="opacity-100"
-                    leave-active-class="transition"
-                    leave-from-class="oapcity-100"
+                    leave-active-class="transition-opacity duration-1000 ease-in-out"
+                    leave-from-class="opacity-100"
                     leave-to-class="opacity-0"
                     appear
                 >
@@ -48,68 +50,40 @@
 </template>
 
 <script setup>
-/* gsap verfügbar machen */
-import gsap from "gsap";
+    /* gsap verfügbar machen */
+    import gsap from "gsap";
 
-const show = ref(true);
-const anicon = ref(true);
+    const show = ref(true);
+    const anicon = ref(true);
 
-/* vue3 transitions gsap functions */
-function onBeforeEnter(el) {
-    console.log("onBeforeEnter");
+    /* vue3 transitions gsap functions */
+    function onBeforeEnter(el) {
+        console.log("onBeforeEnter");
 
-    gsap.set(el, {
-        scale: 0.5,
-        autoAlpha: 0,
+        gsap.set(el, {
+            scale: 0.5,
+            autoAlpha: 0,
+        });
+    }
+
+    function onEnter(el, done) {
+        console.log("onEnter");
+
+        gsap.to(el, {
+            delay: 1,
+            duration: 0.5,
+            scale: 1,
+            autoAlpha: 1,
+            ease: "power2.out",
+            onComplete: done,
+        });
+    }
+
+    onMounted(() => {
+        console.log("onMounted");
     });
-}
 
-function onEnter(el, done) {
-    console.log("onEnter");
-
-    gsap.to(el, {
-        delay: 1,
-        duration: 0.5,
-        scale: 1,
-        autoAlpha: 1,
-        ease: "power2.out",
-        onComplete: done,
+    onBeforeRouteLeave(() => {
+        console.log("onBeforeRouteLeave");
     });
-}
-
-onMounted(() => {
-    console.log("onMounted");
-});
-
-onBeforeRouteLeave(() => {
-    console.log("onBeforeRouteLeave");
-});
 </script>
-
-<style lang="scss" scoped>
-.transitions {
-    background-color: greenyellow;
-    color: #202020;
-    font-size: 26px;
-    padding: 200px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.transition {
-    transition: opacity 1000ms ease;
-}
-
-.opacity-0 {
-    opacity: 0;
-}
-
-.opacity-100 {
-    opacity: 1;
-}
-</style>

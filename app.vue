@@ -1,52 +1,52 @@
 <script setup lang="ts">
-import gsap from "gsap";
+    import gsap from "gsap";
 
-/* Transition */
-function onBeforeEnter() {
-    console.log("onBeforeEnter");
-}
+    /* Transition */
+    function onBeforeEnter() {
+        console.log("onBeforeEnter");
+    }
 
-function onEnter(el, done) {
-    console.log("enter");
-    gsap.timeline()
-        .to("#classic-tr", {
+    function onEnter(el, done) {
+        console.log("enter");
+        gsap.timeline()
+            .to("#classic-tr", {
+                duration: 1.1,
+                height: "0vh",
+                bottom: "100%",
+                ease: "power3.out",
+            })
+            .set("#classic-tr", {
+                height: "0vh",
+                bottom: "0%",
+                onComplete: done,
+            });
+    }
+
+    function onAfterEnter(el) {
+        //isRoute.isNewPage++;
+        console.log("onAfterEnter");
+    }
+
+    function onLeave(el, done) {
+        console.log("leave");
+        gsap.to("#classic-tr", {
             duration: 1.1,
-            height: "0vh",
-            bottom: "100%",
-            ease: "power3.out",
-        })
-        .set("#classic-tr", {
-            height: "0vh",
+            height: "100vh",
             bottom: "0%",
+            ease: "power3.in",
             onComplete: done,
         });
-}
+    }
 
-function onAfterEnter(el) {
-    //isRoute.isNewPage++;
-    console.log("onAfterEnter");
-}
-
-function onLeave(el, done) {
-    console.log("leave");
-    gsap.to("#classic-tr", {
-        duration: 1.1,
-        height: "100vh",
-        bottom: "0%",
-        ease: "power3.in",
-        onComplete: done,
+    onMounted(() => {
+        console.log("%c Enter app", "background: #000; color: #fff");
     });
-}
 
-onMounted(() => {
-    console.log("%c Enter app", "background: #000; color: #fff");
-});
+    onUnmounted(() => {
+        console.log("%c Exit app", "background: #000; color: #fff");
+    });
 
-onUnmounted(() => {
-    console.log("%c Exit app", "background: #000; color: #fff");
-});
-
-/*definePageMeta({
+    /*definePageMeta({
     pageTransition: {
         name: "custom-flip",
         mode: "out-in",
@@ -79,8 +79,14 @@ onUnmounted(() => {
 
 <template>
     <div>
-        <div id="test">
-            <div id="classic-tr"></div>
+        <div
+            id="test"
+            class="grid overflow-hidden fixed top-0 left-0 w-screen h-screen pointer-events-none z-[999]"
+        >
+            <div
+                id="classic-tr"
+                class="relative p-0 place-self-end w-full bg-blue-500 h-0 bottom-0"
+            ></div>
         </div>
 
         <router-view v-slot="{ Component }">
@@ -115,28 +121,3 @@ onUnmounted(() => {
     </Transition>-->
     </div>
 </template>
-
-<style scoped>
-#test {
-    display: grid;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 999;
-}
-#classic-tr {
-    position: relative;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    place-self: end;
-    width: 100%;
-    background-color: blue;
-    height: 0vh;
-    bottom: 0%;
-}
-</style>

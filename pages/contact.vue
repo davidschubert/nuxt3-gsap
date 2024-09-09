@@ -1,37 +1,37 @@
 <script setup>
-// Transition
-import gsap from "gsap";
-definePageMeta({
-    pageTransition: {
-        name: "custom-flip",
-        mode: "out-in",
-        onBeforeEnter: (el) => {
-            console.log("onBeforeEnter");
+    // Transition
+    import gsap from "gsap";
+    definePageMeta({
+        pageTransition: {
+            name: "custom-flip",
+            mode: "out-in",
+            onBeforeEnter: (el) => {
+                console.log("onBeforeEnter");
 
-            gsap.set(el, {
-                scale: 0.5,
-                autoAlpha: 0,
-            });
-        },
-        onEnter: (el, done) => {
-            console.log("onEnter");
+                gsap.set(el, {
+                    scale: 0.5,
+                    autoAlpha: 0,
+                });
+            },
+            onEnter: (el, done) => {
+                console.log("onEnter");
 
-            gsap.to(el, {
-                delay: 1,
-                duration: 0.5,
-                scale: 1,
-                autoAlpha: 1,
-                ease: "power2.out",
-                onComplete: done,
-            });
-        },
-        onAfterEnter: (el) => {
-            console.log("onAfterEnter");
-        },
-        onLeave: (el, done) => {
-            console.log("onLeave");
+                gsap.to(el, {
+                    delay: 1,
+                    duration: 0.5,
+                    scale: 1,
+                    autoAlpha: 1,
+                    ease: "power2.out",
+                    onComplete: done,
+                });
+            },
+            onAfterEnter: (el) => {
+                console.log("onAfterEnter");
+            },
+            onLeave: (el, done) => {
+                console.log("onLeave");
 
-            /*const tl = gsap.timeline();
+                /*const tl = gsap.timeline();
 
             tl.to(".loading-screen", {
                 duration: 1.2,
@@ -40,7 +40,7 @@ definePageMeta({
                 ease: "Expo.easeInOut",
             });
 
-            tl.to(".loading-screen", {
+            tl.to("#loading-screen", {
                 duration: 1,
                 width: "100%",
                 left: "100%",
@@ -48,46 +48,55 @@ definePageMeta({
                 delay: 0.3,
             });
 
-            tl.set(".loading-screen", { left: "-100%", onComplete: done });*/
+            tl.set("#loading-screen", { left: "-100%", onComplete: done });*/
 
-            gsap.to(".loading-screen", {
-                delay: 1,
-                duration: 1.2,
-                scale: 0.5,
-                autoAlpha: 0,
-                ease: "Expo.easeInOut",
-                onComplete: done,
-            });
+                gsap.to("#loading-screen", {
+                    delay: 1,
+                    duration: 1.2,
+                    scale: 0.5,
+                    autoAlpha: 0,
+                    ease: "Expo.easeInOut",
+                    onComplete: done,
+                });
+            },
         },
-    },
-});
+    });
 
-// SEO and Meta
-useHead({
-    title: "Contact | David Schubert — UI/UX Designer",
-    meta: [{ name: "description", content: "My amazing contact." }],
-});
+    // SEO and Meta
+    useHead({
+        title: "Contact | David Schubert — UI/UX Designer",
+        meta: [{ name: "description", content: "My amazing contact." }],
+    });
 
-onMounted(() => {
-    console.log("%c Enter Contact", "background: #000; color: #ff0000");
-});
+    onMounted(() => {
+        console.log("%c Enter Contact", "background: #000; color: #ff0000");
+    });
 
-onBeforeRouteLeave(() => {
-    console.log("%c Exit Contact", "background: #000; color: #ff0000");
-});
+    onBeforeRouteLeave(() => {
+        console.log("%c Exit Contact", "background: #000; color: #ff0000");
+    });
 </script>
 
 <template>
     <GsapScrollsmoother>
-        <div class="load-container">
-            <div class="loading-screen"></div>
+        <div
+            class="fixed top-0 left-0 w-full h-screen overflow-hidden z-10 pointer-events-none"
+        >
+            <div
+                class="loading-screen relative p-0 bg-[#4bedc2] w-0 h-full"
+                id="loading-screen"
+            ></div>
         </div>
-        <div class="intro">
+        <div
+            class="w-full h-screen bg-gradient-to-br from-[#fcd8c0] via-[#fef8ed] to-[#fefcf5] text-[#1d1d1d] flex items-center justify-center text-9xl font-normal content-visibility-auto"
+        >
             <span data-lag="0.4" data-speed="1">contact</span>
         </div>
         <AnimationChangebgcolor />
-        <div class="wrapper-contact">
-            <div class="contact">
+        <div
+            class="flex flex-col items-center justify-center min-h-screen p-0 bg-red-200 bg-opacity-20"
+        >
+            <div class="w-[62%] text-center py-40">
                 <h1>Contact</h1>
                 <h2>
                     Ut consequat semper viverra nam libero justo laoreet sit
@@ -117,7 +126,7 @@ onBeforeRouteLeave(() => {
                     sites still in their infancy. Various versions have evolved
                     over the years, sometimes by accident, sometimes on purpose.
                 </p>
-                <!--<AnimationText />-->
+                <AnimationText />
                 <p>
                     3 Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                     sed diam nonumy eirmod tempor invidunt ut labore et dolore
@@ -187,57 +196,3 @@ onBeforeRouteLeave(() => {
         </div>
     </GsapScrollsmoother>
 </template>
-
-<style scoped>
-.wrapper-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0px;
-    background-color: rgba(255, 0, 0, 0.2);
-}
-.contact {
-    width: 62%;
-    text-align: center;
-    padding: 160px 0 160px 0;
-}
-
-.intro {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(70deg, #fcd8c0 10%, #fef8ed 60%, #fefcf5);
-    color: #1d1d1d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 9em;
-    font-weight: 400;
-
-    content-visibility: auto;
-}
-
-/* Transition */
-.loading-screen {
-    position: relative;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    background-color: #4bedc2;
-    width: 0%;
-    height: 100%;
-}
-
-.load-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 10;
-    pointer-events: none;
-}
-</style>

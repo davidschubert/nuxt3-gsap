@@ -1,24 +1,28 @@
-<script setup>
-// SEO and Meta
-useHead({
-    title: "About | David Schubert – UI/UX Designer",
-    meta: [{ name: "description", content: "My amazing about." }],
-});
+<script setup lang="ts">
+    // SEO and Meta
+    useHead({
+        title: "About | David Schubert – UI/UX Designer",
+        meta: [{ name: "description", content: "My amazing about." }],
+    });
 
-onMounted(() => {
-    console.log("%c Enter About", "background: greenyellow; color: black");
-});
+    onMounted(() => {
+        console.log("%c Enter About", "background: greenyellow; color: black");
+    });
 
-onBeforeRouteLeave(() => {
-    console.log("%c Exit About", "background: greenyellow; color: black");
-});
+    onBeforeRouteLeave(() => {
+        console.log("%c Exit About", "background: greenyellow; color: black");
+    });
 </script>
 
 <template>
     <GsapScrollsmoother :settings="'128'">
-        <div class="intro">about me</div>
-        <div class="wrapper-about">
-            <div class="about">
+        <div
+            class="w-full h-screen bg-gradient-to-br from-[#ddd5da] via-[#f0f1f7] to-[#d2d4ed] text-[#1d1d1d] flex items-center justify-center text-9xl font-normal [content-visibility:auto]"
+        >
+            about me
+        </div>
+        <div class="flex flex-col items-center justify-center min-h-screen p-0">
+            <div class="w-[62%] text-center py-40">
                 <h1>About</h1>
                 <h2>
                     Ut consequat semper viverra nam libero justo laoreet sit
@@ -167,33 +171,3 @@ onBeforeRouteLeave(() => {
         </div>
     </GsapScrollsmoother>
 </template>
-
-<style lang="scss" scoped>
-.wrapper-about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0;
-}
-.about {
-    width: 62%;
-    text-align: center;
-    padding: 160px 0 160px 0;
-}
-.intro {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(55deg, #ddd5da 7%, #f0f1f7 53%, #d2d4ed);
-    color: #1d1d1d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 9em;
-    font-weight: 400;
-
-    content-visibility: auto;
-}
-</style>

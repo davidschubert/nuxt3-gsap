@@ -19,8 +19,3 @@ onBeforeRouteLeave(() => {
         <AnimationExamplesStagger />
     </GsapScrollsmoother>
 </template>
-
-<style lang="scss" scoped>
-.wrapper-gsap {
-}
-</style>

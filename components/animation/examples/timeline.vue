@@ -1,5 +1,7 @@
 <template>
-    <div class="home">
+    <div
+        class="bg-green-300 text-gray-800 text-2xl p-52 rounded-md mb-5 flex w-full min-h-screen flex-col overflow-hidden"
+    >
         <AnimationExamplesNav />
         <br />
         <div>
@@ -30,49 +32,33 @@
 </template>
 
 <script setup>
-/* gsap verfügbar machen */
-const { gsap } = useGsap();
-let ctx = null;
+    /* gsap verfügbar machen */
+    const { gsap } = useGsap();
+    let ctx = null;
 
-/* html content vars */
-const title = ref(null);
-const paraOne = ref(null);
-const paraTwo = ref(null);
-const paraThree = ref(null);
+    /* html content vars */
+    const title = ref(null);
+    const paraOne = ref(null);
+    const paraTwo = ref(null);
+    const paraThree = ref(null);
 
-onMounted(() => {
-    ctx = gsap.context(() => {
-        // Animation 2
-        //console.log(paraTwo.value);
+    onMounted(() => {
+        ctx = gsap.context(() => {
+            // Animation 2
+            //console.log(paraTwo.value);
 
-        const tl = gsap.timeline({ delay: 1, paused: true });
+            const tl = gsap.timeline({ delay: 1, paused: true });
 
-        tl.from(title.value, { x: "-200", autoAlpha: 0, duration: 1 });
-        tl.from(paraOne.value, { x: "+200", autoAlpha: 0, duration: 1 });
-        tl.from(paraTwo.value, { x: "-200", autoAlpha: 0, duration: 1 });
-        tl.from(paraThree.value, { x: "+200", autoAlpha: 0, duration: 1 });
+            tl.from(title.value, { x: "-200", autoAlpha: 0, duration: 1 });
+            tl.from(paraOne.value, { x: "+200", autoAlpha: 0, duration: 1 });
+            tl.from(paraTwo.value, { x: "-200", autoAlpha: 0, duration: 1 });
+            tl.from(paraThree.value, { x: "+200", autoAlpha: 0, duration: 1 });
 
-        tl.play();
+            tl.play();
+        });
     });
-});
 
-onBeforeRouteLeave(() => {
-    ctx.revert();
-});
+    onBeforeRouteLeave(() => {
+        ctx.revert();
+    });
 </script>
-
-<style lang="scss" scoped>
-.home {
-    background-color: greenyellow;
-    color: #202020;
-    font-size: 26px;
-    padding: 200px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    flex-direction: column;
-    overflow: hidden;
-}
-</style>

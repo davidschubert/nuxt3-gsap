@@ -1,5 +1,8 @@
 <template>
-    <div ref="container" class="home">
+    <div
+        ref="container"
+        class="bg-green-300 text-gray-800 text-2xl p-52 rounded-md mb-5 flex w-full min-h-screen flex-col overflow-hidden"
+    >
         <AnimationExamplesNav />
         <br />
         <div ref="content">
@@ -33,60 +36,44 @@
 </template>
 
 <script setup>
-/* gsap verfügbar machen */
-const { gsap } = useGsap();
-let ctx = null;
+    /* gsap verfügbar machen */
+    const { gsap } = useGsap();
+    let ctx = null;
 
-/* html content vars */
-const container = ref(null);
-const content = ref(null);
-const pone = ref(null);
+    /* html content vars */
+    const container = ref(null);
+    const content = ref(null);
+    const pone = ref(null);
 
-onMounted(() => {
-    ctx = gsap.context(() => {
-        // Textabschnitte nacheinander einblenden
-        gsap.from(content.value.children, {
-            delay: 0,
-            duration: 0.8,
-            y: "+100",
-            autoAlpha: 0,
-            stagger: 0.25,
-            ease: "back.out(1.7)",
+    onMounted(() => {
+        ctx = gsap.context(() => {
+            // Textabschnitte nacheinander einblenden
+            gsap.from(content.value.children, {
+                delay: 0,
+                duration: 0.8,
+                y: "+100",
+                autoAlpha: 0,
+                stagger: 0.25,
+                ease: "back.out(1.7)",
+            });
+
+            // Paragraph One im loop animieren
+            let tween = gsap.to(pone.value, {
+                delay: 2,
+                duration: 0.5,
+                x: 100,
+                ease: "power2.easeOut",
+                repeat: -1,
+                yoyo: true,
+            });
+            tween.pause();
+            tween.seek(2);
+            tween.progress(2);
+            tween.play();
         });
-
-        // Paragraph One im loop animieren
-        let tween = gsap.to(pone.value, {
-            delay: 2,
-            duration: 0.5,
-            x: 100,
-            ease: "power2.easeOut",
-            repeat: -1,
-            yoyo: true,
-        });
-        tween.pause();
-        tween.seek(2);
-        tween.progress(2);
-        tween.play();
     });
-});
 
-onBeforeRouteLeave(() => {
-    ctx.revert();
-});
+    onBeforeRouteLeave(() => {
+        ctx.revert();
+    });
 </script>
-
-<style lang="scss" scoped>
-.home {
-    background-color: greenyellow;
-    color: #202020;
-    font-size: 26px;
-    padding: 200px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    flex-direction: column;
-    overflow: hidden;
-}
-</style>

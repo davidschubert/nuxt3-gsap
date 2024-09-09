@@ -1,25 +1,31 @@
 <script setup>
-// SEO and Meta
-useHead({
-    title: "Imprint | David Schubert – UI/UX Designer",
-    meta: [{ name: "description", content: "My amazing imprint." }],
-});
+    // SEO and Meta
+    useHead({
+        title: "Imprint | David Schubert – UI/UX Designer",
+        meta: [{ name: "description", content: "My amazing imprint." }],
+    });
 
-onMounted(() => {
-    console.log("%c Enter Imprint", "background: #000; color: #00ff00");
-});
+    onMounted(() => {
+        console.log("%c Enter Imprint", "background: #000; color: #00ff00");
+    });
 
-onBeforeRouteLeave(() => {
-    console.log("%c Exit Imprint", "background: #000; color: #00ff00");
-});
+    onBeforeRouteLeave(() => {
+        console.log("%c Exit Imprint", "background: #000; color: #00ff00");
+    });
 </script>
 
 <template>
     <GsapScrollsmoother :settings="'8'">
-        <!--<TransitionLoading />-->
-        <div class="intro">imprint</div>
-        <div class="wrapper-imprint">
-            <div class="imprint">
+        <TransitionLoading />
+        <div
+            class="w-full h-screen bg-gradient-to-br from-[#ddd5da] via-[#f0f1f7] to-[#d2d4ed] text-[#1d1d1d] flex items-center justify-center text-9xl font-normal [content-visibility:auto]"
+        >
+            imprint
+        </div>
+        <div
+            class="flex flex-col items-center justify-center min-h-screen p-0 bg-green-200 bg-opacity-20"
+        >
+            <div class="w-[62%] text-center py-40">
                 <h1>Imprint</h1>
                 <h2>
                     Ut consequat semper viverra nam libero justo laoreet sit
@@ -167,34 +173,3 @@ onBeforeRouteLeave(() => {
         </div>
     </GsapScrollsmoother>
 </template>
-
-<style lang="scss" scoped>
-.wrapper-imprint {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0px;
-    background-color: rgba(0, 255, 0, 0.2);
-}
-.imprint {
-    width: 62%;
-    text-align: center;
-    padding: 160px 0 160px 0;
-}
-.intro {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(55deg, #ddd5da 7%, #f0f1f7 53%, #d2d4ed);
-    color: #1d1d1d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 9em;
-    font-weight: 400;
-
-    content-visibility: auto;
-}
-</style>

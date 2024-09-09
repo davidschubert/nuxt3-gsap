@@ -3,8 +3,6 @@ export default defineNuxtConfig({
     // SSR: To build your Nuxt project using Server Side Rendering (SSR) you need to ensure your target is server in your Nuxt config file. If the property is missing, that's fine, it's the default.
     target: "static",
 
-    css: ["normalize.css/normalize.css", "@/assets/css/styles.scss"],
-
     build: {
         transpile: ["gsap"],
     },
@@ -38,11 +36,7 @@ export default defineNuxtConfig({
                 { name: "format-detection", content: "telephone=no" },
                 { name: "robots", content: "all" },
                 { name: "theme-color", content: "var(--surface-color)" },
-                { name: "apple-mobile-web-app-capable", content: "yes" },
-                {
-                    name: "copyrighted-site-verification",
-                    content: "c552f044f4e41c2b",
-                },
+                { name: "mobile-web-app-capable", content: "yes" },
                 {
                     property: "url",
                     name: "url",
@@ -117,12 +111,12 @@ export default defineNuxtConfig({
             ],
             /*style: [],*/
             /*script: [
-                {
-                    type: "text/javascript",
-                    src: "/js/style.js",
-                    body: true,
-                },
-            ],*/
+            {
+                type: "text/javascript",
+                src: "/js/style.js",
+                body: true,
+            },
+        ],*/
             noscript: [
                 // <noscript>JavaScript is required</noscript>
                 { children: "JavaScript is required 🥰" },
@@ -135,5 +129,19 @@ export default defineNuxtConfig({
         //pageTransition: { name: "page", mode: "out-in" },
     },
 
-    devtools: false,
+    devtools: true,
+    modules: ["@nuxtjs/tailwindcss"],
+    css: ["~/assets/css/styles.scss"],
+
+    tailwindcss: {
+        cssPath: ["~/assets/css/tailwind.css", { injectPosition: "first" }],
+        configPath: "tailwind.config",
+        exposeConfig: {
+            level: 2,
+        },
+        config: {},
+        viewer: true,
+    },
+
+    compatibilityDate: "2024-09-08",
 });
