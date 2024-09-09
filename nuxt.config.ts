@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     // PR: To build your static (pre-rendered) site, you have to make sure target is set to static in your nuxt.config.js file
     // SSR: To build your Nuxt project using Server Side Rendering (SSR) you need to ensure your target is server in your Nuxt config file. If the property is missing, that's fine, it's the default.
-    target: "static",
+    ssr: false,
 
     build: {
         transpile: ["gsap"],
@@ -13,9 +13,9 @@ export default defineNuxtConfig({
             htmlAttrs: { lang: "en", dir: "ltr" },
             title: "David Schubert — UI/UX Designer",
             meta: [
-                { title: "David Schubert — UI/UX Designer" },
-                { lang: "en" },
-                { language: "English" },
+                { name: "title", content: "David Schubert — UI/UX Designer" },
+                { property: "og:locale", content: "en" },
+                { name: "language", content: "English" },
                 { property: "name", name: "name", content: "David Schubert" },
                 { charset: "utf-8" },
                 { "http-equiv": "X-UA-Compatible", content: "IE=edge" },
@@ -129,7 +129,7 @@ export default defineNuxtConfig({
         //pageTransition: { name: "page", mode: "out-in" },
     },
 
-    devtools: true,
+    devtools: { enabled: true },
     modules: ["@nuxtjs/tailwindcss"],
     css: ["~/assets/css/styles.scss"],
 

@@ -2,11 +2,11 @@
     import gsap from "gsap";
 
     /* Transition */
-    function onBeforeEnter() {
+    function onBeforeEnter(el: Element) {
         console.log("onBeforeEnter");
     }
 
-    function onEnter(el, done) {
+    function onEnter(el: Element, done: () => void) {
         console.log("enter");
         gsap.timeline()
             .to("#classic-tr", {
@@ -22,12 +22,11 @@
             });
     }
 
-    function onAfterEnter(el) {
-        //isRoute.isNewPage++;
+    function onAfterEnter(el: Element) {
         console.log("onAfterEnter");
     }
 
-    function onLeave(el, done) {
+    function onLeave(el: Element, done: () => void) {
         console.log("leave");
         gsap.to("#classic-tr", {
             duration: 1.1,
